@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { useTheme } from "~/ui/theme";
 
-export default function Index() {
+export default function FeedScreen() {
   const { background, text } = useTheme();
   return (
     <View
@@ -17,7 +17,7 @@ export default function Index() {
           color: text,
         }}
       >
-        Edit app/index.tsx to edit this screen.
+        Feed
       </Text>
     </View>
   );
