@@ -68,7 +68,7 @@ export const posts = [
     },
     content: "Sunsets like these make me grateful. 🌄",
     createdAt: "30m",
-    image: "https://images.unsplash.com/photo-1501973801540-537f08ccae7d",
+    image: "https://images.unsplash.com/photo-1501973801540-537f08ccae7",
     stats: {
       comments: 6,
       retweets: 13,
