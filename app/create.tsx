@@ -11,15 +11,17 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { theme } from "~/ui/theme";
+import { usePostStore } from "~/store/postSlice";
 
 export default function CreateScreen() {
   const router = useRouter();
   const [content, setContent] = useState("");
-  const [image, setImage] = useState<string | null>(null);
+  const addPost = usePostStore((state) => state.addPost);
+  const [image, setImage] = useState<string | undefined>(undefined);
 
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      mediaTypes: ["images"],
       allowsEditing: true,
       aspect: [4, 3],
       quality: 0.7,
@@ -34,9 +36,10 @@ export default function CreateScreen() {
     const newPost = {
       id: Date.now().toString(),
       user: {
-        name: "John Smith",
-        handle: "@johnsmith",
-        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+        name: "Petr Brantalík",
+        handle: "@brantalikP",
+        avatar:
+          "https://media.licdn.com/dms/image/v2/D4E22AQE8K-euCD4QYA/feedshare-shrink_1280/feedshare-shrink_1280/0/1732801976771?e=1746057600&v=beta&t=wvTsiCnaWgTCmyrO_ITJmO0ARBnCcKFl1-Do8vQys3U",
       },
       content,
       createdAt: "now",
@@ -48,7 +51,8 @@ export default function CreateScreen() {
       },
     };
 
-    console.log("Submitted post:", newPost);
+    addPost(newPost);
+
     router.back();
   };
 

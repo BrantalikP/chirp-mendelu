@@ -7,7 +7,7 @@ import { theme } from "~/ui/theme";
 export default function PostDetail() {
   const { id } = useLocalSearchParams();
 
-  const post = Object.values(posts).find((post) => post.id === id);
+  const post = posts.find((post) => post.id === id);
 
   if (!post?.id) {
     return <Redirect href="/" />;
