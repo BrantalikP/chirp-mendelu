@@ -2,6 +2,7 @@ import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import { Link, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from "~/ui/theme";
+import { formatDistanceToNow } from "date-fns";
 
 export interface Post {
   id: string;
@@ -25,6 +26,11 @@ interface IPostCard {
 }
 
 export const PostCard = ({ post }: IPostCard) => {
+  const formattedTime =
+    formatDistanceToNow(new Date(post.createdAt)) === "less than a minute"
+      ? "now"
+      : formatDistanceToNow(new Date(post.createdAt), { addSuffix: true });
+
   return (
     <Link
       href={{
@@ -52,7 +58,7 @@ export const PostCard = ({ post }: IPostCard) => {
             <View style={styles.header}>
               <Text style={styles.name}>{post.user.name}</Text>
               <Text style={styles.handle}>
-                {post.user.handle} · {post.createdAt}
+                {post.user.handle} · {formattedTime}
               </Text>
             </View>
             <Text style={styles.content}>{post.content}</Text>

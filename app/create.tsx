@@ -42,7 +42,7 @@ export default function CreateScreen() {
           "https://media.licdn.com/dms/image/v2/D4E22AQE8K-euCD4QYA/feedshare-shrink_1280/feedshare-shrink_1280/0/1732801976771?e=1746057600&v=beta&t=wvTsiCnaWgTCmyrO_ITJmO0ARBnCcKFl1-Do8vQys3U",
       },
       content,
-      createdAt: "now",
+      createdAt: new Date().toISOString(),
       image,
       stats: {
         comments: 0,
