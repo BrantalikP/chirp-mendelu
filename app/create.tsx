@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 
-export const CreateScreen = () => {
+export default function CreateScreen() {
   return (
     <View>
       <Text>Create</Text>
     </View>
   );
-};
+}

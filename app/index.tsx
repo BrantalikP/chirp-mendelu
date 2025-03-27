@@ -1,24 +1,24 @@
-import { Text, View } from "react-native";
-import { useTheme } from "~/ui/theme";
+import { FlatList, StyleSheet, View } from "react-native";
+// import { useTweetStore } from "../../store/tweetStore";
+import { PostCard } from "~/components/PostCard";
+import { posts } from "~/mocks/feed";
+import { theme } from "~/ui/theme";
 
 export default function FeedScreen() {
-  const { background, text } = useTheme();
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: background,
-      }}
-    >
-      <Text
-        style={{
-          color: text,
-        }}
-      >
-        Feed
-      </Text>
+    <View style={style.container}>
+      <FlatList
+        data={posts}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <PostCard post={item} />}
+      />
     </View>
   );
 }
+
+export const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: theme.background,
+  },
+});

@@ -1,8 +1,8 @@
 import { View, Text } from "react-native";
-export const PostDetail = () => {
+export default function PostDetail() {
   return (
     <View>
       <Text>PostDetail</Text>
     </View>
   );
-};
+}
