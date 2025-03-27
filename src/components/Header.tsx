@@ -9,7 +9,7 @@ export const Header = () => {
       <View style={style.logoRow}>
         <Image
           source={{
-            uri: "https://img.icons8.com/ios-filled/50/twitterx--v1.png",
+            uri: "https://img.icons8.com/ios-filled/50/twitter--v1.png",
           }}
           style={style.logo}
         />

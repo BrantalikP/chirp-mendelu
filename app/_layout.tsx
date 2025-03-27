@@ -16,7 +16,18 @@ const RootLayout = () => {
     <Stack>
       <Stack.Screen name="index" options={{ header: () => <Header /> }} />
       <Stack.Screen name="create" options={{ presentation: "modal" }} />
-      <Stack.Screen name="tweet/[id]" options={{ title: "Tweet" }} />
+      <Stack.Screen
+        name="post/[id]"
+        options={{
+          title: "",
+          headerBackButtonDisplayMode: "minimal",
+          headerTintColor: theme.text,
+          headerStyle: {
+            backgroundColor: theme.background,
+          },
+          headerShadowVisible: false,
+        }}
+      />
     </Stack>
   );
 };
