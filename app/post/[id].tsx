@@ -1,12 +1,12 @@
 import { StyleSheet, View } from "react-native";
 import { Redirect, useLocalSearchParams } from "expo-router";
 import { PostCard } from "~/components/PostCard"; // Adjust the import path based on your file structure
-import { posts } from "~/mocks/feed";
 import { theme } from "~/ui/theme";
+import { usePostStore } from "~/store/postSlice";
 
 export default function PostDetail() {
   const { id } = useLocalSearchParams();
-
+  const posts = usePostStore((state) => state.posts);
   const post = posts.find((post) => post.id === id);
 
   if (!post?.id) {
