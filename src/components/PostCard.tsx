@@ -1,25 +1,9 @@
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from "~/ui/theme";
 import { formatDistanceToNow } from "date-fns";
-
-export interface Post {
-  id: string;
-  content: string;
-  user: {
-    name: string;
-    handle: string;
-    avatar: string;
-  };
-  createdAt: string;
-  image?: string;
-  stats: {
-    comments: number;
-    retweets: number;
-    likes: number;
-  };
-}
+import { Post } from "~/types";
 
 interface IPostCard {
   post: Post;
@@ -32,48 +16,38 @@ export const PostCard = ({ post }: IPostCard) => {
       : formatDistanceToNow(new Date(post.createdAt), { addSuffix: true });
 
   return (
-    <Link
-      href={{
-        pathname: `/post/[id]`,
-        params: {
-          id: post.id,
-        },
+    <Pressable
+      style={styles.card}
+      onPress={() => {
+        router.navigate({
+          pathname: `/post/[id]`,
+          params: {
+            id: post.id,
+          },
+        });
       }}
-      asChild
     >
-      <Pressable
-        style={styles.card}
-        onPress={() => {
-          router.navigate({
-            pathname: `/post/[id]`,
-            params: {
-              id: post.id,
-            },
-          });
-        }}
-      >
-        <View style={styles.row}>
-          <Image source={{ uri: post.user.avatar }} style={styles.avatar} />
-          <View style={{ flex: 1 }}>
-            <View style={styles.header}>
-              <Text style={styles.name}>{post.user.name}</Text>
-              <Text style={styles.handle}>
-                {post.user.handle} · {formattedTime}
-              </Text>
-            </View>
-            <Text style={styles.content}>{post.content}</Text>
-            {post.image && (
-              <Image source={{ uri: post.image }} style={styles.image} />
-            )}
-            <View style={styles.statsRow}>
-              <Stat icon="chatbubble-outline" count={post.stats.comments} />
-              <Stat icon="repeat-outline" count={post.stats.retweets} />
-              <Stat icon="heart-outline" count={post.stats.likes} />
-            </View>
+      <View style={styles.row}>
+        <Image source={{ uri: post.user.avatar }} style={styles.avatar} />
+        <View style={{ flex: 1 }}>
+          <View style={styles.header}>
+            <Text style={styles.name}>{post.user.name}</Text>
+            <Text style={styles.handle}>
+              {post.user.handle} · {formattedTime}
+            </Text>
+          </View>
+          <Text style={styles.content}>{post.content}</Text>
+          {post.image && (
+            <Image source={{ uri: post.image }} style={styles.image} />
+          )}
+          <View style={styles.statsRow}>
+            <Stat icon="chatbubble-outline" count={post.stats.comments} />
+            <Stat icon="repeat-outline" count={post.stats.retweets} />
+            <Stat icon="heart-outline" count={post.stats.likes} />
           </View>
         </View>
-      </Pressable>
-    </Link>
+      </View>
+    </Pressable>
   );
 };
 

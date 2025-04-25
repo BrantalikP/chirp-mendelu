@@ -1,22 +1,6 @@
 import { create } from "zustand";
 import { posts } from "~/mocks/feed";
-
-export interface Post {
-  id: string;
-  content: string;
-  createdAt: string;
-  image?: string;
-  user: {
-    name: string;
-    handle: string;
-    avatar: string;
-  };
-  stats: {
-    comments: number;
-    retweets: number;
-    likes: number;
-  };
-}
+import { Post } from "~/types";
 
 interface PostStore {
   posts: Post[];
