@@ -39,7 +39,7 @@ export default function CreateScreen() {
         name: "Petr Brantalík",
         handle: "@brantalikP",
         avatar:
-          "https://media.licdn.com/dms/image/v2/D4E22AQE8K-euCD4QYA/feedshare-shrink_1280/feedshare-shrink_1280/0/1732801976771?e=1746057600&v=beta&t=wvTsiCnaWgTCmyrO_ITJmO0ARBnCcKFl1-Do8vQys3U",
+          "https://media.licdn.com/dms/image/v2/D4E22AQE8K-euCD4QYA/feedshare-shrink_1280/feedshare-shrink_1280/0/1732801976771?e=1749081600&v=beta&t=38yMl4DLBzrclycEDRrAGn5rCl_I5mvl3m3yk_OV7xc",
       },
       content,
       createdAt: new Date().toISOString(),
